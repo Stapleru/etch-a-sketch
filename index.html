@@ -9,7 +9,11 @@
 </head>
 <body>
     <BODY ondragstart="return false;" ondrop="return false;"></BODY>
-    <button onclick="changeGrid()">Change Grid</button>
+    <div class="buttons">
+        <input type="button" onclick="toggleMode(this)" value="Black"></button>
+        <button onclick="changeGrid()">Change Grid</button>
+        <button onclick="eraseGrid()">Erase Grid</button>
+    </div>
     <div class="container">
 
     </div>

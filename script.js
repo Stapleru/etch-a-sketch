@@ -1,4 +1,5 @@
 let isMouseDown = false;
+let currentMode = "black";
 document.body.onmousedown = () => {isMouseDown = true};
 document.body.onmouseup = () => {isMouseDown = false};
 
@@ -18,8 +19,10 @@ function createGrid(size) {
 
 function colorCell(e){
     if(e.type == 'mouseenter' && !isMouseDown) return;
-
-    this.style.backgroundColor = 'black';
+    if(currentMode == 'black')
+        this.style.backgroundColor = 'black';
+    else 
+        this.style.backgroundColor = getRandomColor();
     this.style.border = 'none';
 }
 
@@ -41,6 +44,27 @@ function changeGrid(){
         removeAllChildNodes(grid);
         createGrid(size);
     } 
+}
+
+function eraseGrid(){
+    let cells = document.querySelectorAll('.cell');
+    cells.forEach((element) => {
+        element.style.cssText = "border: 1px solid #e2ddddea; background-color: white; ";
+    });
+}
+
+function toggleMode(button){
+    if(button.value == "Black"){
+        button.value = "Rainbow";
+        currentMode = "rainbow"
+    } else {
+        button.value = "Black";
+        currentMode = "black";
+    }
+}
+
+function getRandomColor(){
+    return "#" + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0').toUpperCase();
 }
 
 createGrid(16);
