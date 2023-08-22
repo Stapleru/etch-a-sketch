@@ -5,5 +5,9 @@
 }
 
 .cell {
-    border: 1px solid #333;
+    border: 1px solid #e2ddddea;
+}
+
+.cell:hover {
+    background-color: #8bb1d1;
 }
